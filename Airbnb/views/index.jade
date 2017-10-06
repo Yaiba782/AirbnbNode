@@ -1,10 +1,10 @@
 extends layout
 
-block login
+block content
   h1= title
   p Welcome to #{title}
 
   p You have to
-    a log in
-        p or
-    a register
+  a(href="/login") log in
+  p or
+  a(href="/register") register
