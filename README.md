@@ -1,2 +1,0 @@
-# AirbnbNode
-NodeJS class
