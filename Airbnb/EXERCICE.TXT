@@ -2,7 +2,7 @@ RBNB Like App (cf lodash, socketio)
 
 - Login (objet 10 user login=>pass bcrypt)
 - Searching with params
-- booking (requete => tel date c'est libtre ? momentJs)
+- booking (requete => tel date c'est libre ? momentJs)
 - messaging
 - emailing (node mailer)
 - updating profile
