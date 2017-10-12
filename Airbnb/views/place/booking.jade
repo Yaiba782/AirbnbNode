@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    div(id="calendar",class="col-md-10")
+
+block script
+    script.
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                selectable: true,
+                select: function(start, end, jsEvent, view, resource) {
+                    text = "Reserver du " + start.format("DD/MM/YYYY") + " au " + end.format("DD/MM/YYYY") + " ?";
+                    if (!confirm(text)) {
+                        return;
+                    }
+                    $.ajax({
+                        type : 'POST',
+                        data: "dateStart="+start.format("YYYY-MM-DD")+"&dateEnd="+end.format("YYYY-MM-DD"),
+                        success : function(response, statut){
+                            location.reload();
+                        },
+                    });
+                },
+                events:!{JSON.stringify(dataBooking)}
+            });
+        });
