@@ -12,8 +12,8 @@ block content
                     tr
                         td
                             a(href='/place/'+place.id)= place.name
-                        td= place.note
-                        td= place.price
+                        td(data-sort=place.note)= place.note+"/10"
+                        td(data-sort=place.price)= place.price+"€/j"
 
 block script
     script.

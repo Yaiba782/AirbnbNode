@@ -5,15 +5,15 @@ block content
     div(class="col-md-12 jumbotron",style="height: 75%")
         div(class='col-md-6' style="float:left;")
             p(class='lead')= data.description
-            span(style="display:block")= data.note
-            span(style="display:block")= data.price
+            span(style="display:block")= data.note+"/10"
+            span(style="display:block")= data.price+"€/j"
             a(class="btn btn-success", href="./"+data.id+"/book/") Reserver
         div(id='map',class="col-md-6", style="height: 100%; width: 100%; float:right")
     
     script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5sl-SMptQ60vEoQOM-l8DYpyQ5zrOIrI&callback=initMap")
     script.
         function initMap() {
-            var myLatLng = {lat: !{JSON.stringify(data.location.x)}, lng: !{JSON.stringify(data.location.y)}};
+            var myLatLng = {lat: !{JSON.stringify(data.locationX)}, lng: !{JSON.stringify(data.locationY)}};
             var map = new google.maps.Map(document.getElementById('map'), {zoom: 10,center: myLatLng});
             var marker = new google.maps.Marker({
             position: myLatLng,
