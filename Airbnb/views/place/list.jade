@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    div
+        table(id='listPlace')
+            thead
+                td Nom
+                td Avis
+                td Prix
+            tbody
+                each place in data 
+                    tr
+                        td
+                            a(href='/place/'+place.id)= place.name
+                        td= place.note
+                        td= place.price
+
+block script
+    script.
+        $('#listPlace').DataTable();

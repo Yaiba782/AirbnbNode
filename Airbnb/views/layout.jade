@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css')
+    link(rel='stylesheet',href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css')
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js")    
+    script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js')
+    style #map{height: 100%;} html,body{height:100%;margin:0;padding:0;}
+
+  body
+    nav(class="navbar navbar-light bg-faded")
+        span
+            a(href='/',class="navbar-brand") Accueil
+            a(href='/place',class="navbar-brand") Places
+        span
+            a(href='/login',class="navbar-brand") Mes informations
+    div(class="col-md-12 global_div", style="height:90%")
+        block content
+    block script
