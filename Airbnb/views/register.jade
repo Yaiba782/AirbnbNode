@@ -3,34 +3,35 @@
 extends layout
 
 block content
-    div
-        form(name="registerForm", method="post")
-            div
+    if error
+        div.alert.alert-danger Une erreur s'est glissée dans le formulaire
+    div.col-md-12
+        form(name="registerForm", method="post", class="form")
+            div.col-md-6
                 p Informations de connexion
-                    div.input
+                    div.input.form-group
                         span.label Login
-                        input(type="text", name="login", placeholder="Login")
-                    div.input
+                        input(type="text", name="login", placeholder="Login",class='form-control')
+                    div.input.form-group
                         span.label Password
-                        input(type="password", name="password", placeholder="******")
-                    div.input
+                        input(type="password", name="password", placeholder="******",class='form-control')
+                    div.input.form-group
                         span.label Password confirmation
-                        input(type="password", name="password_conf", placeholder="******")
+                        input(type="password", name="password_conf", placeholder="******",class='form-control')
+            div.col-md-6
                 p   Informations personnelles
-                    div.input
+                    div.input.form-group
                         span.label Nom
-                        input(type="text", name="nom", placeholder="Dupont")
-                    div.input
+                        input(type="text", name="nom", placeholder="Dupont",class='form-control')
+                    div.input.form-group
                         span.label Prénom
-                        input(type="text", name="prenom", placeholder="Philippe")
-                    div.input
+                        input(type="text", name="prenom", placeholder="Philippe",class='form-control')
+                    div.input.form-group
                         span.label Email
-                        input(type="email", name="email", placeholder="ph.dupt@test.com")
-                    div.input
+                        input(type="email", name="email", placeholder="ph.dupt@test.com",class='form-control')
+                    div.input.form-group
                         span.label Email confirmation
-                        input(type="email", name="email_conf", placeholder="ph.dupt@test.com")
-
-
+                        input(type="email", name="email_conf", placeholder="ph.dupt@test.com",class='form-control')
 
             div.actions
-                        input(type="submit", value="login")
+                        input(type="submit", value="S'inscrire",class='btn btn-success')

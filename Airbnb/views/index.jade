@@ -1,10 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-  p You have to
-  a(href="/login") log in
-  p or
-  a(href="/register") register
+    h1= title
+    p Welcome to #{title}
+    if name
+        div
+            p Welcome back
+            span.strong=name
+    else
+        div
+            p Bienvenu
+            span
+                a(href="/register",class="btn btn-info") S'enregistrer
+                span.col-md-1
+                a(href="/login",class="btn btn-success") Connexion
+    

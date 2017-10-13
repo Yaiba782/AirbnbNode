@@ -7,7 +7,7 @@ router.get('/:id', function(req, res, next) {
     modelPlace.getPlace(req.params.id,(err,rows)=>{
         place = rows[0]
         if(typeof place === 'undefined') {
-            res.redirect('/place/');
+            return res.redirect('/place/');
         }
         res.render('place/get', { data: place});    
     });
@@ -19,6 +19,8 @@ router.get('/:id/book', function(req, res, next) {
     place = modelPlace.getPlace(req.params.id);
     if(typeof place === 'undefined') {
         res.redirect('/place/');
+        res.finished = true;
+        res.end();
     }
     res.end("WIP");
     //res.render('place/get', { data: place});
