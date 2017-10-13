@@ -48,3 +48,13 @@ module.exports.isAllowed = function (req, res, next) {
         return res.redirect('/login');
     }
 }
+
+module.exports.setSession = (login,session,callback)=>{
+    db.all("SELECT * FROM user WHERE login=?;", [login], (err,row)=> {
+        if(row && row[0]) {
+            session.user = row[0]['login'];
+            session.userid = row[0]['id'];
+            callback();
+        }
+    });
+}

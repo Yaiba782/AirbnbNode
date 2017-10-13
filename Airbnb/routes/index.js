@@ -31,10 +31,12 @@ router.post('/login', function(req, res, next) {
 
     user.logUser(login,password, (err,result) => {
         if(result === true) {
-            req.session.user = req.body.login;
-            return res.redirect("/infos");
+            user.setSession(req.body.login,req.session,()=>{
+                return res.redirect("/infos");
+            });
+        } else {
+            return res.render('login', { title: 'YnovBnb' ,error:true});
         }
-        return res.render('login', { title: 'YnovBnb' ,error:true});
     });
 });
 
