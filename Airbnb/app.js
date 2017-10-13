@@ -4,12 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var user = require('./models/user');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var place = require('./routes/place');
 
 var app = express();
+
+// On donne pas d'infos a la con
+app.disable('x-powered-by');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +27,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// Sessions
+app.use(session({
+  secret: 'i4msosecR€tYoullN3verF|ndMe_dqzpdzq',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { path: '/', httpOnly: true, secure: false, maxAge: null }
+}));
+//Verif user before loggin
+app.use(user.isAllowed);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/place', place);
